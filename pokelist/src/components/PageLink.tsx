@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import React, { HTMLProps } from "react";
+import "./PageLink.css";
 
 type Properties = HTMLProps<HTMLAnchorElement> & { active?: boolean };
 

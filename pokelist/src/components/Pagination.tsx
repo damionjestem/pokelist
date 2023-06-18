@@ -4,17 +4,23 @@ import "./Pagination.css";
 
 export type Properties = {
   currentPage: number;
+  lastPage: number;
   setCurrentPage: (page: number) => void;
 };
 
 export default function Pagination({
   currentPage,
+  lastPage,
   setCurrentPage,
 }: Properties) {
   const pageNums = [1, 2, 3];
   return (
     <nav className="pagination" aria-label="Pagination">
-      <PageLink href="#" onClick={() => setCurrentPage(currentPage - 1)}>
+      <PageLink
+        disabled={currentPage === 1}
+        href="#"
+        onClick={() => setCurrentPage(currentPage - 1)}
+      >
         Previous
       </PageLink>
       {pageNums.map((pageNum, i) => (
@@ -27,7 +33,11 @@ export default function Pagination({
           {pageNum}
         </PageLink>
       ))}
-      <PageLink href="#" onClick={() => setCurrentPage(currentPage + 1)}>
+      <PageLink
+        disabled={currentPage === lastPage}
+        href="#"
+        onClick={() => setCurrentPage(currentPage + 1)}
+      >
         Next
       </PageLink>
     </nav>
